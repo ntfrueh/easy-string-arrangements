@@ -1,0 +1,213 @@
+<br/>
+
+<!-- Testing a new header bar - includes "Return to Music List" button and song title/genre -->
+<!-- TODO: Stick this to the top when user scrolls down -->
+
+<div class="row modal-content" id="songHeaderBar" > <!--<style="display: table; width: 100%;"> -->
+
+    <div class=" "> <!--verticalAlignedBtnWrapper-->
+        <a class="btn btn-lg btn-primary col-xs-12 col-sm-3" ng-href="/music">
+            <span class="glyphicon glyphicon-backward" style="padding-right: 10px;"></span>
+            <span style="font-size:90%;">Return to the Music List</span>
+        </a>
+    </div>
+    
+    <div class="col-xs-6 col-sm-7">
+        <!-- Music Info -->
+        <h2 class="customHeader">Song: {{currentSong.name}}</h1>
+        <h3 class="customSubHeader">Genre: {{currentSong.genre}}</h2>
+    </div>
+    
+    <div class="col-xs-12 col-sm-2 verticalAlignedBtnWrapper">
+        <!-- Button trigger modal -->
+        <form action="https://www.paypal.com/cgi-bin/webscr" method="post" target="_top">
+            <input type="hidden" name="cmd" value="_s-xclick">
+            <input type="hidden" name="encrypted" value={{currentSong.songsPaypalButton}}>
+            <input type="image" src="https://www.paypalobjects.com/en_US/i/btn/btn_buynowCC_LG.gif" border="0" name="submit" alt="PayPal - The safer, easier way to pay online!">
+            <img alt="" border="0" src="https://www.paypalobjects.com/en_US/i/scr/pixel.gif" width="1" height="1">
+        </form>
+            
+        <!-- <button id="{{currentSong.name}}" name="{{currentSong.name}}"></button> -->
+        <!-- <ngcart-addtocart class="col-xs-12 col-sm-2 customSubHeader" id="{{currentSong.name}}" name="{{currentSong.name}}" price="{{currentSong.price}}" quantity="1" max-quanity="1" data-toggle="modal" data-target="#myModal" >Purchase Now</ngcart-addtocart> -->
+    </div>    
+</div>
+
+<!-- <p><a class="btn btn-lg btn-success col-xs-12 col-sm-offset-4 col-sm-4" ng-href="/music">Return to the music list</a></p> -->
+<br/> <br/> 
+
+
+<div class="row">
+
+    <!-- Sheet music cover image / carousel -->
+    <div class="col-xs-12 col-sm-3">
+        <div class="col-xs-3">
+            <!-- For sm/md/lg/xl screens, stack the two preview images to the left of the main image -->
+            <img class="carousel-image-sidebar" src="{{currentSong.scoreThumb}}" data-target="#carouselOfThumbnails" data-slide-to="0" alt="Full Score">
+            <img class="carousel-image-sidebar" src="{{currentSong.violinThumb}}" data-target="#carouselOfThumbnails" data-slide-to="1" alt="Violin 1 Part">
+        </div>
+        <div class="col-xs-9">
+            
+            <!-- This is the main carousel section -->
+            <div id="carouselOfThumbnails" class="carousel slide" >
+                
+                <!-- Indicators -->
+                <ol class="carousel-indicators carouselIndicatorsCustom">
+                    <li data-target="#carouselOfThumbnails" data-slide-to="0" class="active" >
+                    <li data-target="#carouselOfThumbnails" data-slide-to="1" class="">
+                </ol>
+
+                <!-- Slides -->
+                <div class="carousel-inner" role="listbox" data-toggle="modal" data-target="#pdfModal" style="cursor: pointer;">
+                    <div class="item active">
+                        <img class="d-block img-fluid" src="{{currentSong.scoreThumb}}" alt="Full Score" width="100%">
+                    </div>
+                    <div class="item">
+                        <img class="d-block img-fluid" src="{{currentSong.violinThumb}}" alt="Violin 1 Part" width="100%">
+                    </div>
+                </div>
+
+                <!-- Controls -->
+                <a class="left carousel-control" data-target="#carouselOfThumbnails" role="button" data-slide="prev">
+                    <span class="glyphicon glyphicon-chevron-left carouselNavCustom"></span>
+                    <span class="sr-only">Previous</span>
+                </a>
+                <a class="right carousel-control" data-target="#carouselOfThumbnails" role="button" data-slide="next">
+                    <span class="glyphicon glyphicon-chevron-right carouselNavCustom" ></span>
+                    <span class="sr-only">Next</span>
+                </a>
+            </div>
+        </div>
+        
+    </div>
+
+    <script>
+        $(function(){
+            $('#carouselOfThumbnails').carousel();
+        });
+    </script>
+
+
+        <!-- <embed src="https://drive.google.com/uc?export=open&id=113-T03sx6NUVj_hhTt2pAgOL0p4j6XPy#toolbar=0&navpanes=0&scrollbar=0"> -->
+        <!-- <h3 class="textOverlay">{{currentSong.name}}</h3>
+        <img src="images/blank.png" alt="" style="width: 100%;"/> -->
+
+    <!-- <br/> -->
+
+
+        <!--<h3>Price: {{currentSong.price | currency}}</h3><ngcart-addtocart id="{{ currentSong.name }}" name="{{ currentSong.name }}" price="{{ currentSong.price }}" quantity="1" max-quanity="1">Add to Cart</ngcart-addtocart>-->
+
+
+    <!-- Song information -->
+    <div class="col-xs-offset-1 col-xs-8 col-sm-offset-0">
+
+        <p><b>{{currentSong.name}}</b> - {{currentSong.description}}</p>
+
+        <!-- Finger Chart Accordion View -->
+        <!-- <div style="border: 1px solid rgb(20, 20, 20);">
+            <button id="fingeringAccordion" class="accordion">Fingering Chart</button>
+            <div class="panel">
+                <img ng-src="{{currentSong.fingerings}}"/>
+            </div>
+        </div> -->
+
+        <br/>
+        <br/>
+        <h3 style="display: inline;">Sample song audio </h3><audio controls src="{{currentSong.sampleAudio}}" ></audio>
+        <br/>
+        <br/>
+    </div>
+
+    
+    <!-- Modal for PDF details -->
+    <div class="modal fade" id="pdfModal" tabindex="-1" role="dialog">
+        <div class="modal-dialog" role="document">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <span style="font-size: 24px;">Sample PDF</span>
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+                </div>
+                <div class="modal-body">
+
+                    <!-- This is the main carousel section -->
+                    <div id="carouselOfMainPDFs" class="carousel slide" data-interval="false" >
+                        
+                        <!-- Indicators -->
+                        <ol class="carousel-indicators carouselIndicatorsCustom">
+                            <li data-target="#carouselOfMainPDFs" data-slide-to="0" class="active" >
+                            <li data-target="#carouselOfMainPDFs" data-slide-to="1" class="">
+                        </ol>
+
+                        <!-- Slides -->
+                        <div class="carousel-inner" role="listbox" data-toggle="modal" data-target="#pdfModal" style="cursor: pointer; height: 80vh;">
+                            <div class="item active">
+                                <iframe style="height:80vh; width:100%;" src="{{currentSong.violinPreviewPDF}}"></iframe>
+                            </div>
+                            <div class="item">
+                                <iframe style="height:80vh; width:100%;" src="{{currentSong.scorePreviewPDF}}"></iframe>
+                            </div>
+                        </div>
+
+
+                        <!-- Controls -->
+                        <a class="left carousel-control" data-target="#carouselOfMainPDFs" role="button" data-slide="prev">
+                            <span class="glyphicon glyphicon-chevron-left carouselNavCustom"></span>
+                            <span class="sr-only">Previous</span>
+                        </a>
+                        <a class="right carousel-control" data-target="#carouselOfMainPDFs" role="button" data-slide="next">
+                            <span class="glyphicon glyphicon-chevron-right carouselNavCustom" ></span>
+                            <span class="sr-only">Next</span>
+                        </a>
+                    </div>
+                    
+                    <!-- <object data="{{currentSong.scorePreviewPDF}}" type="application/pdf" style="width:100%;height:100%;">
+                        <embed src="{{currentSong.scorePreviewPDF}}" type="application/pdf" />
+                    </object> -->
+                    <!-- <iframe width="100%" height="100%" src="{{currentSong.scorePreviewPDF}}"></iframe> -->
+                    <!-- <iframe width="100%" height="100%" src="https://drive.google.com/uc?export=open&id=113-T03sx6NUVj_hhTt2pAgOL0p4j6XPy#toolbar=0&navpanes=0&scrollbar=0&statusbar=0&messages=0&scr‌​ollbar=0"></iframe> -->
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Modal for Payment -->
+    <!-- <div class="modal fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
+        <div class="modal-dialog" role="document">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+                    <h4 class="modal-title" id="myModalLabel">Confirming Purchase: <b>{{currentSong.name}}</b></h4>
+                </div>
+                <div class="modal-body">
+                    The "Buy Now" link below will take you to an external PayPal checkout page. Once the order has been completed, an email will be sent to you with the sheet music and .mp3 music file. Please allow up to 5 minutes for this email to be sent.
+                    <br/> <br/>
+                    You will be charged <b>{{currentSong.price | currency}}</b> for this purchase. You will not be charged until you complete the transaction on PayPal's website.
+                </div>
+                <div class="modal-footer">
+                    <div class="row">
+                        <div class="col-xs-3">
+                            <button type="button" ng-click="removeThisItem()" class="btn btn-default" data-dismiss="modal">Cancel</button>
+                        </div>
+                        <div class="col-xs-offset-4 col-xs-3">
+                            <ngcart-checkout service="paypal" settings="paypalSettings">
+                                Proceed to checkout
+                            </ngcart-checkout>
+
+                            <form action="https://www.paypal.com/cgi-bin/webscr" method="post" target="_top">-->
+                                <!--<input type="hidden" name="cmd" value="_s-xclick">-->
+                                <!--<input type="hidden" name="hosted_button_id" value="MRGU3FNRV4HYE">-->
+                                <!--<input type="image" src="https://www.paypalobjects.com/en_US/i/btn/btn_buynowCC_LG.gif" border="0" name="submit" alt="PayPal - The safer, easier way to pay online!">-->
+                                <!--<img alt="" border="0" src="https://www.paypalobjects.com/en_US/i/scr/pixel.gif" width="1" height="1">-->
+                            <!--</form>
+
+
+
+                        </div>
+                    </div>
+                    <button type="button" class="btn btn-primary">Continue to PayPal</button>
+
+                </div>
+            </div>
+        </div>
+    </div> -->
+
+</div>

@@ -1,0 +1,216 @@
+body {
+    padding-top: 50px
+}
+.glyphicon-remove:hover {
+    cursor: pointer
+}
+.customBrand {
+    color: transparent;
+    text-decoration: none;
+    cursor: pointer;
+    color: #777;
+}
+.musicIcon {
+    display:block;
+    margin-left:auto;
+    margin-right:auto;
+    width: 100%;
+    height: 100%;
+}
+.musicFilterStyle {
+    background: #f5f5f5;
+    padding-top: 10px;
+    padding-bottom: 10px;
+}
+.filterItems {
+    padding-left:10px;
+    padding-right:10px;
+}
+.songListTitle {
+    text-align: center;
+}
+
+/* Sidebar affix parameters */
+#nav.affix {
+    position: fixed;
+    top: 0;
+    /*width: 100%*/
+}
+
+#nav > .navbar-inner {
+    border-left: 0;
+    border-right: 0;
+    border-radius: 0;
+}
+
+/* Header Animation Styles */
+/* Pull down  */
+li.pullDown a:before
+{
+    position: absolute;
+    width: 100%;
+    height: 2px;
+    left: 0px;
+    top: 0px;
+    content: '';
+    background: #FFF;
+    opacity: 0.3;
+    transition: all 0.3s;
+}
+
+li.pullDown a:hover:before
+{
+    height: 100%;
+}
+
+/* Home page styles */
+/* The heart of the matter */
+.testimonial-group > .row {
+    overflow-x: auto;
+    white-space: nowrap;
+}
+.testimonial-group > .row > .col-xs-4 {
+    display: inline-block;
+    float: none;
+}
+
+.bubble {
+    /* position: absolute; */
+    display: table; 
+}
+
+.bubble p {
+    display: table-cell;
+    width: 13em;
+    vertical-align: middle; 
+    text-align: center;
+    word-wrap: break-word;
+    white-space: normal;
+}
+
+/* Music Multiselect Styles */
+multiselect {
+    display:block;
+}
+multiselect .btn {
+    width: 100%;
+    background-color: #FFF;
+}
+multiselect .btn.error{
+    border: 1px solid #da4f49 !important;
+}
+multiselect .dropdown-menu {
+    max-height: 300px;
+    overflow-y: auto;
+}
+multiselect .dropdown-menu {
+    width: 100%;
+    box-sizing: border-box;
+    padding: 2px;
+}
+multiselect .dropdown-menu > li > a {
+    padding: 3px 10px;
+    cursor:pointer;
+}
+
+/* Music page styles */
+.ul {
+    list-style-type: none;
+    padding: 0;
+    margin: 0;
+}
+
+/* Song page styles */
+.image {
+    position: relative;
+    width: 100%; /* for IE 6 */
+    border: #000000 1px solid;
+}
+
+.textOverlay {
+    font-family: "Times New Roman", Times, serif;
+    position: absolute;
+    top: 0%;
+    left: 40%;
+    width: auto;
+}
+
+  /* Accordion Styling */
+  /* Style the buttons that are used to open and close the accordion panel */
+.accordion {
+    background-color: #eee;
+    color: #444;
+    cursor: pointer;
+    padding: 18px;
+    width: 100%;
+    text-align: left;
+    border: none;
+    outline: none;
+    transition: max-height 0.2s ease-out;
+}
+
+/* Add a background color to the button if it is clicked on (add the .active class with JS), and when you move the mouse over it (hover) */
+.active, .accordion:hover {
+    background-color: #ccc;
+}
+
+/* Stylings for song page header */
+@media (min-width: @screen-sm-min) {
+    
+}
+.customHeader {
+    margin: 2px;
+    font-weight: bold;
+    font-size:2vw;
+}
+.customSubHeader {
+    margin: 2px;
+    font-size:2vw;
+}
+.customButtons {
+
+}
+
+.verticalAlignedBtn {
+
+    display: inline-block;
+    vertical-align: middle;
+}
+
+.verticalAlignedBtnWrapper {
+    display: inline-block;
+    vertical-align: middle;
+}
+
+/* Style the accordion panel. Note: hidden by default */
+.panel {
+    padding: 0 18px;
+    background-color: white;
+    max-height: 0;
+    overflow: hidden;
+    transition: max-height 0.2s ease-out;
+    
+}
+
+/* Style for carousel of score thumbnails */
+.carouselIndicatorsCustom li {
+    background-color: rgb(221, 221, 221);
+    border: 1px solid rgb(20, 20, 20);
+    border-radius: 10px;
+  }
+
+.carousel-indicators > .active {
+    border: 1px solid rgb(20, 20, 20);
+    background-color: rgb(184, 217, 255);
+}
+
+.carousel-control > .carouselNavCustom {
+    color: rgb(184, 217, 255);
+}
+
+.carousel-image-sidebar {
+    width: 100%;
+    margin: 5px;
+    border: 1px solid rgb(20, 20, 20);
+    cursor: pointer;
+}

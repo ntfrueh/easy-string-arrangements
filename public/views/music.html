@@ -1,0 +1,170 @@
+<br/>
+<div class="row">
+
+    <!-- Filter boxes - only visible on non-xs displays -->
+    <div class="hidden-xs" data-spy="affix" data-offset-top="5" data-offset-bottom="50">
+
+        <div class="col-sm-2 musicFilterStyle" >
+
+            <!-- FilterBy: Genre -->
+            <form>
+                <fieldset>
+                    <legend>Genre</legend>
+            
+                    <div ng-repeat="(prop, ignoredValue) in allSongs[0]" ng-init="filter[prop]={}">
+                        <li class="list-unstyled" ng-repeat="opt in getOptionsFor(prop)">
+                            <b><input type="checkbox" ng-model="filter[prop][opt]" />&nbsp;{{opt}}</b>
+                        </li>
+                    </div>
+                </fieldset>
+            </form>
+            <br/> <br/>
+
+            <!--Sort-->
+            <form>
+                <fieldset>
+                    <legend>Sort</legend>
+                    
+                    <div>
+                        <input ng-model="orderByProperties" type="radio" id="name-asc" 
+                                name="drone" value="+name" checked />
+                        <label for="name-asc"><b>Name (A-Z)</b></label>
+                    </div>
+            
+                    <div>
+                        <input ng-model="orderByProperties" type="radio" id="name-desc" 
+                                name="drone" value="-name" />
+                        <label for="name-desc"><b>Name (Z-A)</b></label>
+                    </div>            
+                </fieldset>
+            </form>
+            <br/> <br/>
+
+            <!--FilterBy: Grade-->
+            <form>
+                <fieldset>
+                    <legend>Skill Level</legend>
+        
+                    <div ng-repeat="(prop, ignoredValue) in allSongs[0]" ng-init="filter[prop]={}">
+                        <li class="list-unstyled" ng-repeat="opt in getSkillsFor(prop)">
+                            <b><input type="checkbox" ng-model="filter[prop][opt]" />&nbsp;{{opt}}</b>
+                        </li>
+                    </div>    
+                </fieldset>
+            </form>
+        </div>
+    </div>
+
+    <!-- Music ng-repeat -->
+    <div class="col-xs-12 col-sm-offset-1 col-sm-9" >
+        <br/>
+        <h2>Music Available to Purchase</h2>
+        <br/>
+        <p>
+            All purchases include a digital download of the sheet music in .pdf format, as well as an .mp3 recording of the arrangement.
+        </p>
+        <br/>
+
+        <!-- Filter boxes - only available in xs screens -->
+        <div class="hidden-sm hidden-md hidden-lg hidden-xl">
+            <!-- FilterBy: Genre -->
+            <multiselect class="input-xlarge" multiple="true"
+                ng-model="selectedGenre"
+                options="genre in allGenres"
+                change="selected()" >
+            </multiselect>
+
+
+            <form>
+                <fieldset>
+                    <!-- <div class="btn btn-primary dropdown-toggle dropdown" type="button" data-toggle="dropdown">
+
+                        <div ng-repeat="(prop, ignoredValue) in allSongs[0]" ng-init="filter[prop]={}">
+                            <li class="list-unstyled" ng-repeat="opt in getOptionsFor(prop)">
+                                <b><input type="checkbox" ng-model="filter[prop][opt]" />&nbsp;{{opt}}</b>
+                            </li>
+                        </div>
+
+
+
+                        <!-- <span class="caret"></span></button> -->
+
+                        <!-- <div class="btn btn-primary dropdown-toggle" type="button" data-toggle="dropdown" ng-repeat="(prop, ignoredValue) in allSongs[0]" ng-init="filter[prop]={}">
+                            <li class="list-unstyled" ng-repeat="opt in getOptionsFor(prop)">
+                                <b><input type="checkbox" ng-model="filter[prop][opt]" />&nbsp;{{opt}}</b>
+                            </li>
+                        </div> -->
+                            <!-- <li class="list-unstyled" ng-repeat="opt in getOptionsFor(prop)">
+                                <b><input type="checkbox" ng-model="filter[prop][opt]" />&nbsp;{{opt}}</b>
+                            </li> -->
+
+
+                    <!-- </div> -->
+                    
+            
+                    <!-- <div ng-repeat="(prop, ignoredValue) in allSongs[0]" ng-init="filter[prop]={}">
+                        <li class="list-unstyled" ng-repeat="opt in getOptionsFor(prop)">
+                            <b><input type="checkbox" ng-model="filter[prop][opt]" />&nbsp;{{opt}}</b>
+                        </li>
+                    </div> -->
+                </fieldset>
+            </form>
+            
+
+            <!--Sort-->
+            <form>
+                <fieldset>
+                    <legend>Sort</legend>
+                    
+                    <div>
+                        <input ng-model="orderByProperties" type="radio" id="name-asc" 
+                                name="drone" value="+name" checked />
+                        <label for="name-asc"><b>Name (A-Z)</b></label>
+                    </div>
+            
+                    <div>
+                        <input ng-model="orderByProperties" type="radio" id="name-desc" 
+                                name="drone" value="-name" />
+                        <label for="name-desc"><b>Name (Z-A)</b></label>
+                    </div>            
+                </fieldset>
+            </form>
+            <br/> <br/>
+
+            <!--FilterBy: Grade-->
+            <form>
+                <fieldset>
+                    <legend>Skill Level</legend>
+        
+                    <div ng-repeat="(prop, ignoredValue) in allSongs[0]" ng-init="filter[prop]={}">
+                        <li class="list-unstyled" ng-repeat="opt in getSkillsFor(prop)">
+                            <b><input type="checkbox" ng-model="filter[prop][opt]" />&nbsp;{{opt}}</b>
+                        </li>
+                    </div>    
+                </fieldset>
+            </form>
+        </div>
+
+
+        <div class="col-xs-6 col-sm-4" ng-repeat="song in filtered=(allSongs | filter:filterByProperties | orderBy:orderByProperties)">
+
+            <a ng-href="/composition/{{song._id}}">
+                <div class="well wellHover pointer" style="text-align: center; min-height:200px; max-height: 200px;">
+                    <img class="musicIcon" style="width: 75px; height: 75px;" src="\images\240px-CD_icon_test.svg.png">
+                    <h4 class="songListTitle">{{song.name}}</h4>
+                    <h5 class="songListTitle">Song Genre - {{song.genre}}</h5>
+                </div>
+            </a>
+        </div>
+    </div>
+</div>
+<!--<script>-->
+<!--$('#nav').affix({-->
+<!--offset: {-->
+<!--//            top: $('#nav').offset().top,-->
+<!--bottom: ($('footer').outerHeight(true) +-->
+<!--$('.app').outerHeight(true)) +-->
+<!--40-->
+<!--}-->
+<!--});-->
+<!--</script>-->

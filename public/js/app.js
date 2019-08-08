@@ -1,0 +1,1 @@
+angular.module('elementarySheetMusic', ['ngRoute', 'appRoutes', 'firebase', 'ngCart', 'MainCtrl', 'MusicCtrl', 'SongCtrl', 'MyCartCtrl', 'MyCheckoutCtrl', 'SongService']);

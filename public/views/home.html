@@ -1,0 +1,53 @@
+    <div class="col-xs-12 col-sm-2">
+
+        <h4 style="padding-top:20px;">Newly-added arrangements:</h4>
+        
+        <div class="hidden-sm hidden-md hidden-lg hidden-xl container testimonial-group">
+            <div class="row text-center">
+                <div class="col-xs-4 well wellHover pointer" style="height: 20vh;" ng-repeat="song in allSongs | orderBy:'added':true">
+                    <a ng-href="/composition/{{song._id}}">
+                        <img class="musicIcon" style="width: 13vw; height: 13vw;" src="\images\240px-CD_icon_test.svg.png">
+                        <div class="bubble">
+                            <p>{{song.name}}</p>
+                        </div>
+                    </a>
+                </div> 
+            </div>
+        </div>
+
+        <!-- Code for vertical sidebar -->
+        <div class="hidden-xs" ng-repeat="song in allSongs | orderBy:'added':true">
+            <a ng-href="/composition/{{song._id}}">
+                <img class="musicIcon" style="width: 75px; height: 75px;" src="\images\240px-CD_icon_test.svg.png">
+                <p class="songListTitle">{{song.name}}</p>
+            </a>
+        </div>
+    </div>
+
+    <div class="col-xs-12 col-sm-8">
+        <h1>Welcome to EasyStringArrangements.com!</h1>
+
+        <h2>Find your next great repertoire addition here.</h2> 
+
+        <p style="font-size: 16px;">
+            <br/>
+            If you are a string teacher in search of quality but easy-to-play string arrangements for your beginning or intermediate string ensemble, then you’ve come to the right place! 
+            <br/><br/>
+            <b>What We Offer And How We Work</b>
+            <br/>
+            First, we try to keep things simple and affordable. What we DON’T offer are hardcopies of our arrangements along with the printing and shipping costs that we have to pass onto you. 
+            What we DO offer are full scores and individual parts as PDF files and an MP3 file of the arrangement  - all of which are emailed to you once you make a purchase. 
+            <br/><br/>
+            <b>The Instrumentation</b>
+            <br/>
+            In addition to offering traditional violin, viola, cello and string bass parts, we also offer a piano part. Some arrangements include the chord changes within the piano part while other arrangements include a separate lead sheet. 
+            This opens the possibilities for you to include students who don’t play violin, viola, cello or bass, but do play chordal instruments like guitar or ukulele. 
+            And unlike most string arrangements, we also include a drum set or percussion part with our arrangements. The drum set notation is based upon the Percussive Arts Society (PAS) format.
+            <br/><br/>
+            <b>What You’ll See On This Website</b>
+            <br/>
+            Sample violin and partial scores are available for all arrangements. Full MP3 files are also available so you can hear the entire piece.
+            
+        </p>
+    </div>
+
