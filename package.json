@@ -17,7 +17,7 @@
   },
   "scripts": {
     "start": "node server.js",
-    "postinstall": "HOME=$HOME/app-root/runtime bower install || bower install"
+    "postinstall": "bower install"
   },
   "engines": {
     "node": "8.12.0",
