@@ -7,6 +7,7 @@ var bodyParser     = require('body-parser');
 var methodOverride = require('method-override');
 var db             = require('./config/db');
 
+
 // configuration ===========================================
 
 // DB Configuration
@@ -32,8 +33,8 @@ app.use(express.static(__dirname + '/public')); // set the static files location
 // routes ==================================================
 require('./app/routes')(app); // pass our application into our routes
 
-// create sitemaps =========================================
-
+// create sitemaps and pre-render! ==================================
+app.use(require('prerender-node'));
 
 // start app ===============================================
 app.listen(port);
